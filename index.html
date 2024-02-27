@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calculadora de hidratación</title>
+    <link rel="stylesheet" href="./style.css" />
+    <script>
+        function calcular() {
+            var number = parseInt(document.getElementById("peso").value); 
+            var resultado = document.getElementById("Resultado");
+            if (number >= 0 && number <= 10) {
+                resultado.innerHTML = "La cantidad necesaria es: " + (number * 100 / 16) + "cc/hr";
+            } else if (number > 10 && number <= 20) {
+                resultado.innerHTML = "La cantidad necesaria es: " + (((number - 10) * 50 + 1500) / 16) + "cc/hr";
+            } else if (number > 20 && number <= 30) {
+                resultado.innerHTML = "La cantidad necesaria es: " + (((number - 20) * 20 + 1500) / 16) + "cc/hr";
+            } else if (number > 30) {
+                resultado.innerHTML = "La cantidad necesaria es: " + (((((number * 4 + 7) / (number + 90)) * 2000) / 24).toFixed(2)) + "cc/hr";
+            } else {
+                resultado.innerHTML = "Ingrese un número válido";
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <h1>Calculadora de Hidratación Basal</h1>
+    <div>
+        <div id="calculadora">
+            <h2>Hidratación Basal</h2>
+            <p>Indique el peso del paciente</p>
+            <input type="number" id="peso" placeholder="Indicar peso en kilogramos" />
+            <button onclick="calcular()">Calcular</button>
+        </div>
+        <div>
+            <p1><output id="Resultado"></output></p1>
+        </div>
+        <div id="descripcion">
+            <h3>¿Cómo se calcula?</h3>
+            <ul>
+                <li>De 0kg a 10kg, se calcula 100cc por cada kilo.</li>
+                <li>Se suman 50cc por cada kilo de peso por arriba de 10kg, hasta 20kg</li>
+                <li>De 20kg y hasta 30kg, se suman 20cc por cada kilo adicional</li>
+                <li>De 30kg para arriba, se determina mediante la superficie corporal del paciente</li>
+            </ul>
+        </div>
+    </div>
+</body>
+
+</html>
